@@ -1,0 +1,5 @@
+<%= form_tag(users_path, :method => 'post', :class => 'register-form') do%>
+  <%= text_field_tag 'username' %>
+  <%= text_field_tag 'password' %>
+  <%= submit_tag 'Submit', :id => 'new_user' %>
+<% end %>
