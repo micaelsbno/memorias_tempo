@@ -1,2 +1,16 @@
 <h1>  <%= @user %> </h1>
+<%= @id %>
 
+<% unless logged_in? %>
+  <%= form_tag(sessions_path, :method => 'post', :class => 'login-form', name: 'login-form') do %>
+    <%= text_field_tag 'username' %>
+    <%= text_field_tag 'password' %>
+    <%= submit_tag 'Submit', :id => 'Login' %>
+  <% end %>
+<% end %>
+
+<% if logged_in? %>
+  <%= form_tag(sessions_path, :method => 'delete', :class => 'logout-form', name: 'logout-form') do %>
+    <%= submit_tag 'Logout', :id => 'Logout' %>
+  <% end %>
+<% end %>

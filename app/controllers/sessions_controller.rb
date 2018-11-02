@@ -1,15 +1,18 @@
 class SessionsController < ApplicationController
   
+  include SessionsHelper
+
   def new
 
   end
   
   def create
-
+    store_user_session
+    redirect_to '/'
   end
 
   def destroy
-    session[:user_id] = nil
+    delete_user_session
     redirect_to '/'
   end
 

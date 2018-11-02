@@ -1,11 +1,29 @@
 require 'rails_helper'
 
-RSpec.describe 'views/home' do
-  # # context 'login page' do
-  # #   assign(:home, build(:home, url: 'http://example.com'))
+RSpec.describe 'homepage' do  
+  context 'user is not logged in' do
+    before { visit root_path }
 
-  # #   render
+    it 'shows login form when the user is not logged in' do
+      expect(page).to have_form '/sessions', 'post'
+    end
+  end
 
-  # #   expect(rendered).to have_form 'Login'
-  # end
+  context 'the user is logged in:' do 
+    before { 
+      User.create(username: 'test_user', password: '123')
+      visit root_path
+      fill_in 'username', with: 'test_user'
+      fill_in 'password', with: '123'
+      click_button 'Submit'
+    }
+
+    it 'hides login' do
+      expect(page).to_not have_form '/sessions', 'post', :with => { name: 'login-form' }
+    end
+
+    it 'shows logout' do
+      expect(page).to have_form '/sessions', 'post', :with => { name: 'logout-form' }
+    end
+  end
 end
