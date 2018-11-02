@@ -1,23 +1,28 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  context 'new user' do
-    it 'creates a new user correctly' do
-      user = described_class.new
-      user.username = 'test'
-      user.password = '123'
-      
-      user.save!
+FactoryBot.define do
+  factory :user do
+    username { 'Name' }
+    password { 'test@user.com' }
+  end
+end
 
-      expect("id: #{User.last.id}").to eq("id: #{user.id}")
-    end
+describe User do 
 
-    it 'throws an error if password is empty' do
-      user = described_class.new
-      user.username = 'test'
-      user.password = ''
+  it 'has a valid factory' do
+    expect(build(:user).save).to be true
+  end
 
-      expect(user.save).to eql(false)
-    end
+  it 'is invalid without a unique name' do
+    user = create(:user)
+    second_user = build(:user, username: 'Name', password: '123')
+
+    expect(second_user.save).to be false
+  end
+
+  it 'is invalid without a password' do
+    user = build(:user, username: 'Name', password: nil)
+
+    expect(user.save).to be false
   end
 end

@@ -11,5 +11,4 @@ feature 'create user', :type => :feature do
     expect(page).to have_content 'testUser'
   end
 
-
 end
