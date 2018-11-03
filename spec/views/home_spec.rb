@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'homepage' do  
-  context 'user is not logged in' do
+  context 'user is not logged in:' do
     before { visit root_path }
 
-    it 'shows login form when the user is not logged in' do
+    it 'shows login form' do
       expect(page).to have_form '/sessions', 'post'
     end
   end
