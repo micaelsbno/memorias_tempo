@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'homepage' do  
+RSpec.describe 'homepage view' do  
   context 'user is not logged in:' do
     before { visit root_path }
 
@@ -15,7 +15,7 @@ RSpec.describe 'homepage' do
       visit root_path
       fill_in 'username', with: 'test_user'
       fill_in 'password', with: '123'
-      click_button 'Submit'
+      click_button 'Login'
     }
 
     it 'hides login' do
