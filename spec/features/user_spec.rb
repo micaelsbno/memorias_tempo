@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'User Accounts', :type => :feature do
-  
   context 'user input is correct' do
     it 'creates new account' do
       visit '/register'

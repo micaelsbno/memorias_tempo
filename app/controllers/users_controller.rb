@@ -6,11 +6,10 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       @error = 'Username is already taken'
-      render :register
+      render 'register'
     end    
   end
 
-  def new
-    render :register
+  def register
   end
 end

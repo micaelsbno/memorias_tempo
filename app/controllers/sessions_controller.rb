@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
       @error = 'Username or password invalid'
-      render :new
+      render :login
     end
   end
 

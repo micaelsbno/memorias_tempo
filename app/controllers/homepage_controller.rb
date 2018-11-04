@@ -6,7 +6,7 @@ class HomepageController < ApplicationController
   def index
     if logged_in?
       @user = get_current_user_info
-      render :dashboard   
+      render :dashboard
     else
       render :login
     end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'homepage#index'
-  get '/register', to: 'users#new'
-  get '/login', to: 'sessions#new'
+  get '/register', to: 'users#register'
+  get '/login', to: 'sessions#login'
 
   resources :users
   resources :posts
