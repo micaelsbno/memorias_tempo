@@ -1,0 +1,8 @@
+<% @user[:posts].each do |post| %>
+  <%= post.content %>
+<% end %>
+<%= @user[:username] %>
+  <%= form_tag(sessions_path, :method => 'delete', :class => 'logout-form', name: 'logout-form') do %>
+  <%= submit_tag 'Logout', :id => 'Logout' %>
+<% end %>
+this is the dashboard

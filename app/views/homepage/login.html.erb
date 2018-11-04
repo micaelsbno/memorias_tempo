@@ -1,0 +1,5 @@
+  <%= form_tag(sessions_path, :method => 'post', :class => 'login-form', name: 'login-form') do %>
+    <%= text_field_tag 'username' %>
+    <%= text_field_tag 'password' %>
+    <%= submit_tag 'Login', :id => 'Login' %>
+  <% end %>

@@ -1,12 +1,14 @@
 class HomepageController < ApplicationController
   
-  include HomepageHelper
+  include UsersHelper
+  include SessionsHelper
 
   def index
     if logged_in?
-      @user = session[:username]
-      @id = session[:user_id]
+      @user = get_current_user_info
+      render :dashboard   
+    else
+      render :login
     end
-    render :index
   end
 end

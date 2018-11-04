@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User Accounts', :type => :feature do
   it 'creates new account' do
-    visit new_user_path
+    visit '/register'
 
     fill_in 'username', with: 'test_user'
     fill_in 'password', with: '1234'

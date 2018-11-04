@@ -7,7 +7,7 @@ FactoryBot.define do
   end
 end
 
-describe Post do 
+describe Post, :type => :model do 
   let (:user) { User.create(username: 'Name', password: '123') }
 
   it 'has a valid factory' do

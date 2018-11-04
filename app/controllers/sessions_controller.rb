@@ -2,12 +2,8 @@ class SessionsController < ApplicationController
   
   include SessionsHelper
 
-  def new
-
-  end
-  
   def create
-    store_user_session
+    login_user if password_is_valid?
     redirect_to '/'
   end
 
@@ -15,5 +11,4 @@ class SessionsController < ApplicationController
     delete_user_session
     redirect_to '/'
   end
-
 end

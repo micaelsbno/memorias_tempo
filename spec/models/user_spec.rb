@@ -7,7 +7,7 @@ FactoryBot.define do
   end
 end
 
-describe User do 
+describe User, :type => :model do 
 
   it 'has a valid factory' do
     expect(build(:user).save).to be true

@@ -1,5 +1,7 @@
-<h1>  <%= @user %> </h1>
-<%= @id %>
+<% @user[:posts].each do |post| %>
+  <%= post.content %>
+<% end %>
+<%= @user.username %>
 
 <% unless logged_in? %>
   <%= form_tag(sessions_path, :method => 'post', :class => 'login-form', name: 'login-form') do %>

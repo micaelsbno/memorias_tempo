@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'homepage view' do  
+describe 'homepage view' do  
   context 'user is not logged in:' do
     before { visit root_path }
 
