@@ -14,9 +14,10 @@ module SessionsHelper
     !!session[:user_id]
   end
 
-  def password_is_valid?
+  def login_is_valid?
     user = User.find_by(username: params[:username])
-    user.authenticate(params[:password])
+    return user.authenticate(params[:password]) if user
+    false
   end
 
   def delete_user_session

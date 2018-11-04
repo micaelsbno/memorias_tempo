@@ -4,6 +4,9 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       redirect_to '/'
+    else
+      @error = 'Username is already taken'
+      render :register
     end    
   end
 

@@ -3,8 +3,13 @@ class SessionsController < ApplicationController
   include SessionsHelper
 
   def create
-    login_user if password_is_valid?
-    redirect_to '/'
+    if login_is_valid?
+      login_user 
+      redirect_to '/'
+    else
+      @error = 'Username or password invalid'
+      render :new
+    end
   end
 
   def destroy
