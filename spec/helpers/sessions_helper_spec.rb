@@ -10,4 +10,10 @@ describe SessionsHelper, :type => :helper do
 
     end
   end
+
+  describe '#save_gps_location' do
+    it 'return hash with location' do
+      
+    end
+  end
 end

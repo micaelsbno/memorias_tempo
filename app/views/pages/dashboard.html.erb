@@ -1,15 +1,36 @@
 <%= form_tag(posts_path, :method => 'post') do %>
-    <%= text_field_tag 'content' %>
-    <%= submit_tag 'Post' %>
+  <%= text_field_tag 'content' %>
+  <%= submit_tag 'Post' %>
 <% end %>
 
 <% @user[:posts].each do |post| %>
   <%= post.content %>
 <% end %>
 
-
 <%= @user[:username] %>
   <%= form_tag(sessions_path, :method => 'delete', :class => 'logout-form', name: 'logout-form') do %>
   <%= submit_tag 'Logout', :id => 'Logout' %>
 <% end %>
 this is the dashboard
+
+<script>
+  window.onload = () => {
+    navigator.geolocation.getCurrentPosition(saveLocationByGPS, saveLocationByIp)
+  }
+
+  saveLocationByGPS = (position) => {
+    let { coords } = position
+      fetch("/sessions/gps_position?lat=" + coords.latitude + '&lon=' + coords.longitude,
+    {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          "X-CSRF-Token": "<%= form_authenticity_token %>",
+        },
+        method: "POST",
+        body: JSON.stringify(position)
+    })
+    .then(function(res){ console.log(res) })
+    .catch(function(res){ console.log(res) })
+  }
+</script>

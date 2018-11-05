@@ -12,16 +12,7 @@ require 'rails_helper'
 # end
 
 describe PostsHelper, type: :helper do
-  
-  context 'user is in Melbourne' do
 
-    describe '#get_location_by_gps' do
-      it 'returns city, country, lat and lon' do
-
-        expect(get_location_by_gps).to be_a(Hash)
-      end
-    end
-  end
 end
 
 
