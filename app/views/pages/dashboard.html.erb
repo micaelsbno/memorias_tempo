@@ -3,9 +3,12 @@
   <%= submit_tag 'Post', :id => 'new_post' %>
 <% end %>
 
-<% @user[:posts].each do |post| %>
-  <%= post.content %>
-<% end %>
+<div class="posts">
+  <% @user[:posts].each do |post| %>
+    <%= post.content %>
+  <% end %>  
+</div>
+
 
 <%= @user[:username] %>
   <%= form_tag(sessions_path, :method => 'delete', :class => 'logout-form', name: 'logout-form') do %>
@@ -28,7 +31,25 @@ this is the dashboard
       body: JSON.stringify(position)
     })
     .then(res => res.json())
-    .then(res => console.log(res))
+    .then(res => {console.log(res); appendNewPost(res)})
     .catch(function(res){ console.log(res) })
   }
+  postMemoryByIp = (content) => {
+    let { coords } = position
+      fetch(`/post_by_ip?ip=&content=${content}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        "X-CSRF-Token": "<%= form_authenticity_token %>",
+      },
+      method: "POST",
+      body: JSON.stringify(position)
+    })
+    .then(res => res.json())
+    .then(res => {console.log(res); appendNewPost(res)})
+    .catch(function(res){ console.log(res) })
+  }
+
+
 </script>

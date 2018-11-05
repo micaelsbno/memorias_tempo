@@ -1,7 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-
-
 postMemory = (e) => {
   e.preventDefault()
   let content = e.target.previousElementSibling.value
@@ -10,10 +6,10 @@ postMemory = (e) => {
   }, postMemoryByIp)
 }
 
-appendNewPost = (post) => {
-  console.log(post)
+appendNewPost = (response) => {
+  const posts = document.querySelector('.posts')
+  const postDiv = document.createElement('div')
+  postDiv.textContent = response.content
+  posts.insertBefore(postDiv, posts.firstChild)
 }
 
-postMemoryByIp = (res) => { 
-  console.log(res)
-}

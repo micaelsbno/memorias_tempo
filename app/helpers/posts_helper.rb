@@ -16,7 +16,12 @@ module PostsHelper
     }
   end
 
-  def get_current_time
+  def create_post_by_ip
+    key = ENV['WEATHER_API_KEY']
+    weather = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{(find_city)['city']}&appid=#{key}")
+  end
 
+  def find_city
+    HTTPARTY.get("http://api.ipstack.com/#{request.remote_ip}?access_key#{ENV['IPSTACK_KEY']}"
   end
 end

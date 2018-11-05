@@ -9,4 +9,12 @@ class Api::PostsController < ApplicationController
     end
     false
   end
+
+  def create_by_ip
+    post = Post.new(create_post_by_ip)
+    if post.save
+      render json: post
+    end
+    false
+  end
 end
