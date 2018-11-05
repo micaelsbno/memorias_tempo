@@ -1,2 +1,15 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+postMemory = (e) => {
+  e.preventDefault()
+  let content = e.target.previousElementSibling.value
+  navigator.geolocation.getCurrentPosition((position) => { 
+    postMemoryByGPS(position, content) 
+  }, postMemoryByIp)
+}
+
+appendNewPost = (response) => {
+  const posts = document.querySelector('.posts')
+  const postDiv = document.createElement('div')
+  postDiv.textContent = response.content
+  posts.insertBefore(postDiv, posts.firstChild)
+}
+
