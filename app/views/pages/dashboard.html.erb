@@ -1,6 +1,6 @@
 <%= form_tag(posts_path, :method => 'post') do %>
   <%= text_field_tag 'content' %>
-  <%= submit_tag 'Post' %>
+  <%= submit_tag 'Post', :id => 'new_post' %>
 <% end %>
 
 <% @user[:posts].each do |post| %>
@@ -14,23 +14,21 @@
 this is the dashboard
 
 <script>
-  window.onload = () => {
-    navigator.geolocation.getCurrentPosition(saveLocationByGPS, saveLocationByIp)
-  }
-
-  saveLocationByGPS = (position) => {
+  document.querySelector('#new_post').addEventListener('click', postMemory)
+  postMemoryByGPS = (position, content) => {
     let { coords } = position
-      fetch("/sessions/gps_position?lat=" + coords.latitude + '&lon=' + coords.longitude,
+      fetch(`/posts?lat=${coords.latitude}&lon=${coords.longitude}&content=${content}`,
     {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          "X-CSRF-Token": "<%= form_authenticity_token %>",
-        },
-        method: "POST",
-        body: JSON.stringify(position)
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        "X-CSRF-Token": "<%= form_authenticity_token %>",
+      },
+      method: "POST",
+      body: JSON.stringify(position)
     })
-    .then(function(res){ console.log(res) })
+    .then(res => res.json())
+    .then(res => console.log(res))
     .catch(function(res){ console.log(res) })
   }
 </script>

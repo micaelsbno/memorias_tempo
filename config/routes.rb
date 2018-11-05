@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
 
   resources :users
-  resources :posts
   resource :sessions, only: [:create, :destroy]
   post '/sessions/gps_position', to: 'api/sessions#save_location_by_gps'
-
+  post '/posts', to: 'api/posts#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
