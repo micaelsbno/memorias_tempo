@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'homepage#index'
+  root 'pages#index'
   get '/register', to: 'users#register'
   get '/login', to: 'sessions#login'
 

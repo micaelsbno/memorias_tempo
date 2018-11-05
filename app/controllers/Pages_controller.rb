@@ -1,4 +1,4 @@
-class HomepageController < ApplicationController
+class PagesController < ApplicationController
   
   include UsersHelper
   include SessionsHelper
