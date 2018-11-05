@@ -22,6 +22,6 @@ module PostsHelper
   end
 
   def find_city
-    HTTPARTY.get("http://api.ipstack.com/#{request.remote_ip}?access_key#{ENV['IPSTACK_KEY']}"
+    HTTPARTY.get("http://api.ipstack.com/#{request.remote_ip}?access_key#{ENV['IPSTACK_KEY']}")
   end
 end
