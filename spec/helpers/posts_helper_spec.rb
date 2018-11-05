@@ -10,6 +10,27 @@ require 'rails_helper'
 #     end
 #   end
 # end
-# RSpec.describe PostsHelper, type: :helper do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+
+describe PostsHelper, type: :helper do
+  
+  context 'user is in Melbourne' do
+
+    describe '#get_location_by_gps' do
+      it 'returns city, country, lat and lon' do
+
+        expect(get_location_by_gps).to be_a(Hash)
+      end
+    end
+  end
+end
+
+
+
+# user logs in
+# ask if user want o use geoposition
+# if yes => save to session
+# if not => save geoposition by IP only
+
+# create get_location_by_gps
+# create get_location_by_ip
+# 
