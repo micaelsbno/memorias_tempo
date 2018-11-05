@@ -3,7 +3,6 @@ module SessionsHelper
     user = User.find_by(username: params[:username])
     session[:user_id] = user.id
     session[:username] = user.username
-    session[:posts] = user.posts
   end
 
   def logged_in?

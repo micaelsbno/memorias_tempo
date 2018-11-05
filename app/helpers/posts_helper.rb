@@ -2,7 +2,7 @@ module PostsHelper
   def create_post
     key = ENV['WEATHER_API_KEY']
     weather = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{params[:lat].to_f}&lon=#{params[:lon].to_f}&appid=#{key}")
-    response = {
+    Post.new(
       temp: weather['main']['temp'].to_i,
       city: weather['name'],
       country: weather['sys']['country'],
@@ -12,7 +12,7 @@ module PostsHelper
       weather_description: weather['weather'][0]['description'],
       content: params[:content],
       user_id: session[:user_id]
-    }
+    )
   end
 
   def create_post_by_ip
