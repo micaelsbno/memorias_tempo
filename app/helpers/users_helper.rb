@@ -8,7 +8,6 @@ module UsersHelper
         username: user.username
       }
     end
-    false
   end
 
   def valid_user? (user_id)
