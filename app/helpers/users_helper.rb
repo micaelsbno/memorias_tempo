@@ -13,4 +13,8 @@ module UsersHelper
   def valid_user? (user_id)
     !!User.find_by(id: user_id)
   end
+
+  def new_user
+    User.new(username: params[:username], password: params[:password])
+  end
 end

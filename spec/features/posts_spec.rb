@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Create Posts', :type => :request do
-  
   before { 
     User.create(username: 'test_user', password: '123')
     visit root_path

@@ -1,5 +1,4 @@
 module PostsHelper
-
   def create_post
     key = ENV['WEATHER_API_KEY']
     weather = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{params[:lat].to_f}&lon=#{params[:lon].to_f}&appid=#{key}")

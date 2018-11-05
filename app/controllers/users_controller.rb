@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  
+  include UsersHelper
+
   def create
-    user = User.new(username: params[:username], password: params[:password])
+    user = new_user
     if user.save
       session[:user_id] = user.id
       redirect_to '/'
