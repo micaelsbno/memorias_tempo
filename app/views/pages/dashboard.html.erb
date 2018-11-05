@@ -1,6 +1,13 @@
+<%= form_tag(posts_path, :method => 'post') do %>
+    <%= text_field_tag 'content' %>
+    <%= submit_tag 'Post' %>
+<% end %>
+
 <% @user[:posts].each do |post| %>
   <%= post.content %>
 <% end %>
+
+
 <%= @user[:username] %>
   <%= form_tag(sessions_path, :method => 'delete', :class => 'logout-form', name: 'logout-form') do %>
   <%= submit_tag 'Logout', :id => 'Logout' %>
