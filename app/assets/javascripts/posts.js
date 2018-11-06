@@ -28,9 +28,9 @@ formatDate = (dateString) => {
   date = new Date(dateString)
   string = ``
   string += Math.abs(date.getHours() - 12)
-  string += `:${date.getMinutes()}`
-  string += `${date.getHours() > 12 ? 'am' : 'pm'}`
-  string += ` – ${date.toDateString().split(' ')[0]}, `
+  string += `:${date.toGMTString().split(' ')[4].split(':')[1]} `
+  string += `${date.getHours() < 12 ? 'am' : 'pm'} `
+  string += `– ${date.toDateString().split(' ')[0]}, `
   string += `${date.toLocaleDateString()}`
   return string
 }
