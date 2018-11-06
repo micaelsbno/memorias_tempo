@@ -12,7 +12,6 @@ class Api::PostsController < ApplicationController
 
   def create_by_ip
     post = create_post_by_ip
-    binding.pry
     if post.save
       render json: post
     end
