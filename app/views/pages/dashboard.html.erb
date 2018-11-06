@@ -1,7 +1,15 @@
-<%= form_tag(posts_path, :method => 'post') do %>
-  <%= text_field 'content', nil, placeholder: 'Write something...' %>
-  <%= submit_tag 'Post', :id => 'new_post' %>
-<% end %>
+<div class="header">
+  <%= @user[:username] %>
+
+  <%= form_tag posts_path, method: 'post', class: 'post-form' do %>
+    <%= text_field 'content', nil, placeholder: 'Write something...', class: 'post-form__input'  %>
+    <%= submit_tag 'Post', id: 'new_post' %>
+  <% end %>
+
+  <%= form_tag sessions_path, method: 'delete', class: 'logout-form', name: 'logout-form' do %>
+    <%= submit_tag 'Logout', id: 'Logout' %>
+  <% end %>  
+</div>
 
 <div class="posts">
   <% @user[:posts].each do |post| %>
@@ -17,13 +25,6 @@
     </div>
   <% end %>  
 </div>
-
-
-<%= @user[:username] %>
-  <%= form_tag(sessions_path, :method => 'delete', :class => 'logout-form', name: 'logout-form') do %>
-  <%= submit_tag 'Logout', :id => 'Logout' %>
-<% end %>
-this is the dashboard
 
 <script>
   document.querySelector('#new_post').addEventListener('click', postMemory)
@@ -58,6 +59,4 @@ this is the dashboard
     .then(res => {console.log(res); appendNewPost(res)})
     .catch(function(res){ console.log(res) })
   }
-
-
 </script>
