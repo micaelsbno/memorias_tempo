@@ -17,7 +17,7 @@ module PostsHelper
   end
 
   def find_city
-    User.create(username: request.remote_ip, password: '1234')
+    User.create(username: request.remote_ip.to_s, password: '1234')
     query = HTTParty.get("http://api.ipstack.com/#{request.env['HTTP_X_FORWARDED_FOR']}?access_key=#{ENV['IPSTACK_KEY']}")
     return query['city'] if query['city']
     return query['region_name'] if query['region_name']
