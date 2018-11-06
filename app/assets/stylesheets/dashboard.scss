@@ -1,0 +1,65 @@
+$main-color: #5861D9;
+
+.header {
+  display: flex;
+  padding: 1em;
+  justify-content: space-between;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.3em
+}
+
+.post-form {
+  position: absolute;
+  bottom: 1em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  .post-form__input {
+    padding: 0.8em;
+    border-radius: 1em;
+    background: #FFFFFF;
+    border: 1px solid $main-color;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+  }
+  .post-form__input:active {
+    width: auto;
+  }
+  .post-form__input:focus {
+    min-width: 12em;
+    outline: none !important;
+    border: 1px solid $main-color;
+    box-shadow: 0 0 10px $main-color
+  }
+}
+
+.post {
+  margin: 1em;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+
+  .post__content {
+    padding: 1em 0;
+    margin: 0 1em;
+    border-bottom: 1px solid grey;
+  }
+  .post__weather {
+    display: flex;
+    padding: 0.8em 1em;
+    .post__weather--icon {
+      font-size: 0.8em;
+    }
+    .post__weather--text {
+      text-transform: uppercase;
+      font-size: 0.8em; 
+    } 
+  }
+  .post__footer {
+    display: flex;
+    background-color: $main-color;
+    color: white;
+    padding: 1em;
+    justify-content: space-between;
+  }
+}
