@@ -13,8 +13,3 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-
-
-saveLocationByIp = () => {
-  console.log('location by ip')
-}

@@ -1,9 +1,9 @@
 postMemory = (e) => {
   e.preventDefault()
   let content = e.target.previousElementSibling.value
-  navigator.geolocation.getCurrentPosition((position) => { 
-    postMemoryByGPS(position, content) 
-  }, postMemoryByIp)
+  navigator.geolocation.getCurrentPosition(
+    position => postMemoryByGPS(position, content), 
+    (error) => postMemoryByIp(content))
 }
 
 appendNewPost = (response) => {

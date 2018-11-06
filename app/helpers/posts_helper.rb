@@ -1,26 +1,34 @@
 module PostsHelper
   def create_post
     key = ENV['WEATHER_API_KEY']
-    weather = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{params[:lat].to_f}&lon=#{params[:lon].to_f}&appid=#{key}")
-    Post.new(
-      temp: weather['main']['temp'].to_i,
-      city: weather['name'],
-      country: weather['sys']['country'],
-      lon: weather['coord']['lon'],
-      lat: weather['coord']['lat'],
-      weather_brief: weather['weather'][0]['main'],
-      weather_description: weather['weather'][0]['description'],
-      content: params[:content],
-      user_id: session[:user_id]
-    )
+    weather_response = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{params[:lat].to_f}&lon=#{params[:lon].to_f}&appid=#{key}")
+    create_new_post(weather_response)
   end
 
   def create_post_by_ip
     key = ENV['WEATHER_API_KEY']
-    weather = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{(find_city)['city']}&appid=#{key}")
+    weather_response = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{find_city}&appid=#{key}")
+    create_new_post(weather_response)
   end
 
   def find_city
-    HTTPARTY.get("http://api.ipstack.com/#{request.remote_ip}?access_key#{ENV['IPSTACK_KEY']}")
+    query = HTTParty.get("http://api.ipstack.com/#{request.remote_ip}?access_key=#{ENV['IPSTACK_KEY']}")
+    return query['city'] if query['city']
+    return query['region_name'] if query['region_name']
+    return query['country_name'] if query ['country_name']
+  end
+
+  def create_new_post(response)
+    Post.new(
+      temp: response['main']['temp'].to_i,
+      city: response['name'],
+      country: response['sys']['country'],
+      lon: response['coord']['lon'],
+      lat: response['coord']['lat'],
+      weather_brief: response['weather'][0]['main'],
+      weather_description: response['weather'][0]['description'],
+      content: params[:content],
+      user_id: session[:user_id]
+    )
   end
 end
