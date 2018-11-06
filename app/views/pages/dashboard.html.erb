@@ -49,8 +49,8 @@
     .catch(function(res){ console.log(res) })
   }
   postMemoryByIp = (content) => {
-    content
-      fetch(`/post_by_ip?content=${content}`,
+     let ip = '<%= request.remote_ip %>'
+      fetch(`/post_by_ip?content=${content}&ip=${ip}`,
     {
       headers: {
         'Accept': 'application/json',
