@@ -1,5 +1,5 @@
 <%= form_tag(posts_path, :method => 'post') do %>
-  <%= text_field_tag 'content' %>
+  <%= text_field 'content', nil, placeholder: 'Write something...' %>
   <%= submit_tag 'Post', :id => 'new_post' %>
 <% end %>
 
