@@ -18,10 +18,8 @@
   <% @user[:posts].each do |post| %>
     <div class="post">
       <p class="post__content"><%= post.content %></p>
-      <div class="post__weather">
-          <span class="post__weather--icon"><i class="fas fa-sun"></i></span><p class="post__weather--text"><%= post.weather_description %></p>
-      </div>
       <div class="post__footer">
+        <p class="post__weather--text"><%= post.weather_description %></p>
         <p class="post__footer--time"><%= post.created_at.strftime '%l:%M %P – %a, %d/%m/%Y' %></p>
         <p class="post__footer--city"><%= post.city %></p>
       </div>
