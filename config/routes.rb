@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#index'
   get '/register', to: 'users#register'
   
-  get '/login', to: 'sessions#login'
+  get '/login', to: 'pages#index'
 
   resources :users
   resource :sessions, only: [:create, :destroy]

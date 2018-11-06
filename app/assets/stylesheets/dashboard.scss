@@ -5,6 +5,7 @@ $accent-color: #FF1D1D;
   display: flex;
   padding: 1em;
   justify-content: space-between;
+  background: white;
 }
 
 .header__profile {
@@ -74,6 +75,7 @@ h3 {
 .post {
   margin: 1em;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16);
+  background: white;
 
   .post__content {
     padding: 1em 0;
