@@ -5,7 +5,16 @@
 
 <div class="posts">
   <% @user[:posts].each do |post| %>
-    <%= post.content %>
+    <div class="post">
+      <p><%= post.content %></p>
+      <div class="post__weather">
+          <span>Icon</span><p class="post__weather--text"><%= post.weather_description %></p>
+          <div class="post__footer">
+            <p class="post__footer--time"><%= post.created_at.strftime '%l:%M %P – %A, %d/%m/%Y' %></p>
+            <p class="post__footer--city"><%= post.city %></p>
+          </div>
+      </div>
+    </div>
   <% end %>  
 </div>
 
@@ -35,6 +44,7 @@ this is the dashboard
     .catch(function(res){ console.log(res) })
   }
   postMemoryByIp = (content) => {
+    content
       fetch(`/post_by_ip?content=${content}`,
     {
       headers: {
