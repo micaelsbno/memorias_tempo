@@ -7,6 +7,7 @@
   <%= text_field_tag 'username', nil, class: 'default-form-input' %>
   <%= text_field_tag 'password', nil, class: 'default-form-input', type: 'password' %>
   <%= submit_tag 'Login', :id => 'Login' %>
+  <p class="small">Don't have an account? <a href="/register">Register now</a></p>
 <% end %>
 
 <%= @error %>
