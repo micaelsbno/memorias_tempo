@@ -1,16 +1,17 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-feature 'Visit Another user', :type => :feature do
+require "rails_helper"
 
-  let (:user) { User.new(username: 'test_user', password: '1234') }
-  before { 
+feature "Visit Another user", type: :feature do
+  let (:user) { User.new(username: "test_user", password: "1234") }
+  before {
     user.save
-    10.times { Post.create(content: 'post_content', user_id: user.id) } 
+    10.times { Post.create(content: "post_content", user_id: user.id) }
   }
 
-  it 'shows user posts when visiting url' do
+  it "shows user posts when visiting url" do
     visit "/users/#{user.username}"
 
-    expect(page).to have_content 'post_content'
+    expect(page).to have_content "post_content"
   end
 end

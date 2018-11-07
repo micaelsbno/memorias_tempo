@@ -1,11 +1,13 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe 'login' do  
-  context 'user is not logged in:' do
-    before { visit '/sessions' }
+require "rails_helper"
 
-    it 'shows login form' do
-      expect(page).to have_form '/sessions', 'post'
+describe "login" do
+  context "user is not logged in:" do
+    before { visit "/sessions" }
+
+    it "shows login form" do
+      expect(page).to have_form "/sessions", "post"
     end
   end
 end

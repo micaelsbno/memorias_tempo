@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class Api::PostsController < ApplicationController
-  
   include PostsHelper
 
   def create

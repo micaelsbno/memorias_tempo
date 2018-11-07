@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
-  
   include SessionsHelper
 
   def create
     if login_is_valid?
-      login_user 
-      redirect_to '/'
+      login_user
+      redirect_to "/"
     else
-      @error = 'Username or password invalid'
+      @error = "Username or password invalid"
       render :login
     end
   end
@@ -18,6 +19,6 @@ class SessionsController < ApplicationController
 
   def destroy
     delete_user_session
-    redirect_to '/'
+    redirect_to "/"
   end
 end
