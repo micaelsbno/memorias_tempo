@@ -1,15 +1,4 @@
 module UsersHelper
-  def get_current_user_posts
-    user = User.find_by(id: session[:user_id])
-    if user
-      return {
-        posts: user.posts.order('created_at desc').limit(10),
-        id: user.id,
-        username: user.username
-      }
-    end
-  end
-
   def current_user
     User.find_by(id: session[:user_id])
   end

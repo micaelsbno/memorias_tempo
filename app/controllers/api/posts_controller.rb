@@ -19,12 +19,6 @@ class Api::PostsController < ApplicationController
   end
 
   def get_more_posts
-    new_posts = Post.where(user: params[:id]).order('created_at desc').limit(10).offset(params[:offset])
-    render json: new_posts
-  end
-
-  def dashboard_get_more_posts
-    new_posts = Post.where(user: params[:id]).order('created_at desc').limit(10).offset(params[:offset])
-    render json: new_posts
+    render json: get_10_next_posts
   end
 end

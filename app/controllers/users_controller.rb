@@ -2,6 +2,16 @@ class UsersController < ApplicationController
   
   include UsersHelper
 
+  def index
+    if logged_in?
+      @user = current_user
+      @posts = @user.posts.order('created_at desc').limit(10)
+      render :show
+    else
+      render :login
+    end
+  end
+
   def create
     user = new_user
     if user.save
@@ -11,16 +21,6 @@ class UsersController < ApplicationController
       @error = 'Username is already taken'
       render 'register'
     end    
-  end
-
-  def index
-    if logged_in?
-      @user = current_user
-      @posts = @user.posts.order('created_at desc').limit(10)
-      render :show
-    else
-      render :login
-    end
   end
 
   def show

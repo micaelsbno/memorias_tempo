@@ -42,4 +42,8 @@ module PostsHelper
       user_id: session[:user_id]
     )
   end
+
+  def get_10_next_posts
+    Post.where(user: params[:id]).order('created_at desc').limit(10).offset(params[:offset])
+  end
 end
