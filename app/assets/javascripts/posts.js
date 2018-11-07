@@ -20,21 +20,6 @@ postMemory = (content, locator, token) => {
   .catch(function(res){ console.log(res) })
 }
 
-// postMemoryByIp = (content, ip, token) => {
-//     fetch(`/post_by_ip?content=${content}&ip=${ip}`,
-//   {
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//       "X-CSRF-Token": token,
-//     },
-//     method: "POST",
-//   })
-//   .then(res => res.json())
-//   .then(res => {console.log(res); appendNewPost(res)})
-//   .catch(function(res){ console.log(res) })
-// }
-
 appendNewPost = (response) => {
   const posts = document.querySelector('.posts')
   const postDiv = document.createElement('div')
