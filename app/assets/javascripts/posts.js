@@ -1,9 +1,33 @@
-postMemory = (e) => {
-  e.preventDefault()
-  let content = e.target.previousElementSibling.value
-  navigator.geolocation.getCurrentPosition(
-    position => postMemoryByGPS(position, content), 
-    (error) => postMemoryByIp(content))
+postMemoryByGPS = (position, content, token) => {
+  let { coords } = position
+    fetch(`/posts?lat=${coords.latitude}&lon=${coords.longitude}&content=${content}`,
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      "X-CSRF-Token": token,
+    },
+    method: "POST",
+    body: JSON.stringify(position)
+  })
+  .then(res => res.json())
+  .then(res => {console.log(res); appendNewPost(res)})
+  .catch(function(res){ console.log(res) })
+}
+
+postMemoryByIp = (content, ip, token) => {
+    fetch(`/post_by_ip?content=${content}&ip=${ip}`,
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      "X-CSRF-Token": token,
+    },
+    method: "POST",
+  })
+  .then(res => res.json())
+  .then(res => {console.log(res); appendNewPost(res)})
+  .catch(function(res){ console.log(res) })
 }
 
 appendNewPost = (response) => {
@@ -34,4 +58,3 @@ formatDate = (dateString) => {
   string += `${date.toLocaleDateString()}`
   return string
 }
-
