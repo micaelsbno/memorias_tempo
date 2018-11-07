@@ -1,13 +1,76 @@
-<div class="main-banner">
-  <h2>Memórias do Tempo</h2>
-  <h1>Register</h1>
+<div class="dark-background"></div>
+
+<div class="register-content">
+  <div class="main-banner">
+    <h2>Memórias do Tempo</h2>
+    <h1>Register</h1>
+  </div>
+
+  <%= form_tag(users_path, :method => 'post', :class => 'register-form') do%>
+    <%= text_field_tag 'username', nil, class: 'default-form-input' %>
+    <%= text_field_tag 'password', nil, class: 'default-form-input', type: 'password' %>
+    <%= submit_tag 'Submit', :id => 'Register' %>
+    <p class="error"><%= @error %></p>
+    <p class="small">Already have an account? <a href="/">Login</a></p>
+  <% end %>
 </div>
 
-<%= form_tag(users_path, :method => 'post', :class => 'register-form') do%>
-  <%= text_field_tag 'username', nil, class: 'default-form-input' %>
-  <%= text_field_tag 'password', nil, class: 'default-form-input', type: 'password' %>
-  <%= submit_tag 'Submit', :id => 'Register' %>
-  <p class="error"><%= @error %></p>
-  <p class="small">Already have an account? <a href="/">Login</a></p>
-<% end %>
+<section class="stars-1">
+  
+</section>
+  <section class="stars-2">
+  
+</section>
 
+<div class="shooting-star">
+  <div class="shoot"></div>
+</div>
+  
+<section class="moon">
+  <div class="dark-hole"></div>
+  <div class="light-hole"></div>
+  <div class="light-hole-2"></div>
+</section>
+
+
+<script>
+function createStar(number){
+  star = document.createElement('div')
+  star.className = 'star'
+  rand = random()
+  star.style = `top: ${rand[0]}vh; left: ${rand[1]}vw`
+  document.querySelector('.stars-' + number).appendChild(star)
+}
+
+function random(){
+  rand = [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)]
+  return rand
+}
+
+while (document.querySelectorAll('.star').length < 400) {
+  createStar(1)
+  createStar(2)
+}
+
+setTimeout(() => {
+  setInterval(lightSmallFire,3000)
+  setInterval(lightBigFire,2800)
+},400)
+
+function shootStar(number){
+  space = document.querySelector('.shooting-star')
+  star = document.createElement('div')
+  star.className = "shoot" + number
+  star.style = 'top:' + Math.floor(Math.random() * 100) + '%';
+  space.appendChild(star)
+}
+
+setInterval(()=>{
+  shootStar(1)}, 2400
+)
+setInterval(()=>{
+ shootStar(2) 
+}, 2100)
+
+
+</script>

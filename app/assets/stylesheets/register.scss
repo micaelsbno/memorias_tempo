@@ -22,3 +22,103 @@ $main-color: #5861D9;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16)
   }
 }
+
+.dark-background {
+  position: fixed;
+  width: 100vw;
+  background: #226;
+  height: 100vh;
+  z-index: -3
+}
+
+.register-content {
+  color: white
+}
+
+
+// start stars here
+
+.star {
+  position: absolute;
+  background-color: white;
+  height: 3px;
+  width: 3px;
+  border-radius: 5px;
+}
+
+.stars-1 {
+  float: right;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  overflow-x: hidden;
+  z-index: -1;
+  animation-name: move-stars-1;
+  animation-iteration-count: infinite;
+  animation-duration: 280s;
+}
+
+.stars-2 {
+  float: right;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top:0;
+  overflow-x: hidden;
+  z-index: -1;
+  animation-name: move-stars-2;
+  animation-iteration-count: infinite;
+  animation-duration: 260s;
+}
+
+@keyframes move-stars-1 {
+  from { margin-left: 0  }
+  to { margin-left: 100vw }
+}
+
+@keyframes move-stars-2 {
+  from { margin-left: -100vw  }
+  to { margin-left: 0 }
+}
+
+
+.shoot1 {
+  top: 50%;
+  left: 0%;
+  height: 2px;
+  width: 0%;
+  margin: 0 auto;
+  border-radius: 4px;
+  background-color: yellow;
+  position: absolute;
+  animation-name: shoot-star;
+  animation-iteration-count: 1;
+  animation-duration: 0.5s;
+}
+
+@keyframes shoot-star {
+  0% { left: 6%; width: 0%; }
+  50% { left: 50%; width: 50% }
+  100% { left: 100%; width: 0% }
+}
+
+.shoot2 {
+  top: 50%;
+  left: 0%;
+  height: 2px;
+  width: 0%;
+  margin: 0 auto;
+  border-radius: 4px;
+  background-color: yellow;
+  position: absolute;
+  animation-name: shoot-star2;
+  animation-iteration-count: 1;
+  animation-duration: 0.5s;
+}
+
+@keyframes shoot-star2 {
+  0% { left: 6%; width: 0%; }
+  50% { left: 50%; width: 50% }
+  100% { left: 100%; width: 0% }
+}
