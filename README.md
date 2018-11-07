@@ -22,8 +22,11 @@ Things you may want to cover:
   RSpec, Capybara, FactoryBot for unit testing.
   Just run rspec
 
-* Services (job queues, cache servers, search engines, etc.)
-
 * Deployment instructions
-
-* ...
+  Setup environment variables on Heroku
+  Restore database through the db.dump file
+  
+* TO-DO
+  – Add remove post button
+  – Add follow other user option
+  – Improve UX
