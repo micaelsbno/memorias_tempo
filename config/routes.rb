@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+  root 'users#index'
   get '/register', to: 'users#register'
   
   get '/login', to: 'pages#index'

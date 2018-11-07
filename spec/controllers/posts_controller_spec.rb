@@ -34,11 +34,24 @@ RSpec.describe Api::PostsController, type: :request do
         'content' => 'post_content', 
       })
     end
+  end
 
-    it 'shows extra posts when user scrolls down' do
+  describe '#get_more_posts' do
+    it 'shows 10 more posts when user scrolls down' do
       30.times { Post.create(content: 'testPost', user_id: user.id) }
       
       get "/user_posts/#{user.id}", params: { offset: '10' }
+      hash_body = JSON.parse(response.body)
+
+      expect(hash_body.length).to be 10
+    end
+  end
+
+  describe '#dashboard_get_more_posts' do
+    it 'shows 10 more posts when user scroll' do 
+      30.times { Post.create(content: 'testPost', user_id: user.id) }
+      
+      get "/dashboard_posts/#{user.id}", params: { offset: '10' }
       hash_body = JSON.parse(response.body)
 
       expect(hash_body.length).to be 10

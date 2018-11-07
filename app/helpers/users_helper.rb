@@ -10,6 +10,14 @@ module UsersHelper
     end
   end
 
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
+
+  def logged_in?
+    !!session[:user_id]
+  end
+
   def valid_user? (user_id)
     !!User.find_by(id: user_id)
   end
