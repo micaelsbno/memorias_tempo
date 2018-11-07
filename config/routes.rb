@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/login', to: 'pages#index'
 
   resources :users
-  resource :sessions, only: [:create, :destroy]
+  get '/user/:id', to: 'users#show'
   post '/sessions/gps_position', to: 'api/sessions#save_location_by_gps'
   post '/posts', to: 'api/posts#create'
   post '/post_by_ip', to: 'api/posts#create_by_ip'

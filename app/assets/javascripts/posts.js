@@ -58,3 +58,10 @@ formatDate = (dateString) => {
   string += `${date.toLocaleDateString()}`
   return string
 }
+
+fetchMorePosts = (e) => {
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    console.log('bottom', e)
+    window.removeEventListener('scroll', fetchMorePosts)
+  }
+}

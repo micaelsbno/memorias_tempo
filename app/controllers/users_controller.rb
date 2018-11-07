@@ -13,6 +13,12 @@ class UsersController < ApplicationController
     end    
   end
 
+  def show
+    @user = User.find_by(username: params[:id])
+    @posts = @user.posts.order('created_at desc').limit(10)
+    render :show
+  end
+
   def register
   end
 end
