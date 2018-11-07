@@ -38,6 +38,21 @@ appendNewPost = (response) => {
   posts.insertBefore(postDiv, posts.firstChild)
 }
 
+fetchDashboardPosts = (e, user_id) => {
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    window.removeEventListener('scroll', fetchMoreUserPosts)
+    fetch(`/dashboard_posts/${user_id}?offset=${offset}`)
+      .then(function(response) {
+        return response.json()
+      })
+      .then(function(response) {
+        appendMorePosts(response)
+        offset = offset + 10
+        window.addEventListener('scroll', fetchMoreUserPosts)
+      })
+  }
+}
+
 formatDate = (dateString) => {
   date = new Date(dateString)
   string = ``

@@ -37,4 +37,8 @@
       error => postMemory(content, ip, '<%= form_authenticity_token %>')
     )
   })
+
+  let offset = 10
+  const user_id = '<%= @user[:id] %>'
+  window.addEventListener('scroll', (e) => {fetchDashboardPosts(e, user_id) })
 </script>
