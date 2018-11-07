@@ -17,4 +17,9 @@ class Api::PostsController < ApplicationController
     end
     false
   end
+
+  def get_more_posts
+    new_posts = Post.where(user: params[:id]).order('created_at desc').limit(10).offset(params[:offset])
+    render json: new_posts
+  end
 end

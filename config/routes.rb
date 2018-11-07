@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   
   get '/login', to: 'pages#index'
 
+  resource :sessions, only: [:create, :destroy]
   resources :users
+  get '/user_posts/:id', to: 'api/posts#get_more_posts'
   get '/user/:id', to: 'users#show'
   post '/sessions/gps_position', to: 'api/sessions#save_location_by_gps'
   post '/posts', to: 'api/posts#create'
