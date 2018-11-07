@@ -7,8 +7,12 @@ body {
   background: #F2F1F1
 }
 
-.small {
+.small, .error {
   text-align: center;
   margin-top: 1em;
   font-size: 0.8em;
+}
+
+.error {
+  color: red
 }

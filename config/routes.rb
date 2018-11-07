@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/login', to: 'pages#index'
 
   resource :sessions, only: [:create, :destroy]
+  get '/sessions', to: 'sessions#login'
   resources :users
   get '/dashboard_posts/:id', to: 'api/posts#dashboard_get_more_posts'
   get '/user_posts/:id', to: 'api/posts#get_more_posts'
