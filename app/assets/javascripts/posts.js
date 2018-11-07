@@ -4,7 +4,7 @@ postMemory = (content, locator, token) => {
     let { coords } = locator
     fetchUrl += `/posts?lat=${coords.latitude}&lon=${coords.longitude}&content=${content}`
   } else {
-    fetchUrl += `/post_by_ip?content=${content}&ip=${ip}`
+    fetchUrl += `/post_by_ip?content=${content}&ip=${locator}`
   }
     fetch(fetchUrl,
   {

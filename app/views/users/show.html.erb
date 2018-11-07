@@ -33,4 +33,15 @@
   let offset = 10
   const user_id = '<%= @user[:id] %>'
   window.addEventListener('scroll', (e) => {fetchMoreUserPosts(e, user_id) })
+  <% if logged_in? && current_user.id === @user[:id] %>
+    document.querySelector('#new_post').addEventListener('click', e => {
+      e.preventDefault()
+      const ip = '<%= request.remote_ip %>'
+      const content = e.target.previousElementSibling.value
+      navigator.geolocation.getCurrentPosition(
+        position => postMemory(content, position, '<%= form_authenticity_token %>'),
+        error => postMemory(content, ip, '<%= form_authenticity_token %>')
+      )
+    })
+  <% end %>
 </script>
