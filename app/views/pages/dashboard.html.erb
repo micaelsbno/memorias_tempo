@@ -33,8 +33,8 @@
     const ip = '<%= request.remote_ip %>'
     const content = e.target.previousElementSibling.value
     navigator.geolocation.getCurrentPosition(
-      position => postMemoryByGPS(position, content, '<%= form_authenticity_token %>'),
-      error => postMemoryByIp(content, ip, '<%= form_authenticity_token %>')
+      position => postMemory(content, position, '<%= form_authenticity_token %>'),
+      error => postMemory(content, ip, '<%= form_authenticity_token %>')
     )
   })
 </script>

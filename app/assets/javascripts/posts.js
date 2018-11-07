@@ -1,6 +1,12 @@
-postMemoryByGPS = (position, content, token) => {
-  let { coords } = position
-    fetch(`/posts?lat=${coords.latitude}&lon=${coords.longitude}&content=${content}`,
+postMemory = (content, locator, token) => {
+  let fetchUrl = ``;
+  if (locator.coords !== undefined) {
+    let { coords } = locator
+    fetchUrl += `/posts?lat=${coords.latitude}&lon=${coords.longitude}&content=${content}`
+  } else {
+    fetchUrl += `/post_by_ip?content=${content}&ip=${ip}`
+  }
+    fetch(fetchUrl,
   {
     headers: {
       'Accept': 'application/json',
@@ -8,27 +14,26 @@ postMemoryByGPS = (position, content, token) => {
       "X-CSRF-Token": token,
     },
     method: "POST",
-    body: JSON.stringify(position)
   })
   .then(res => res.json())
   .then(res => {console.log(res); appendNewPost(res)})
   .catch(function(res){ console.log(res) })
 }
 
-postMemoryByIp = (content, ip, token) => {
-    fetch(`/post_by_ip?content=${content}&ip=${ip}`,
-  {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      "X-CSRF-Token": token,
-    },
-    method: "POST",
-  })
-  .then(res => res.json())
-  .then(res => {console.log(res); appendNewPost(res)})
-  .catch(function(res){ console.log(res) })
-}
+// postMemoryByIp = (content, ip, token) => {
+//     fetch(`/post_by_ip?content=${content}&ip=${ip}`,
+//   {
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       "X-CSRF-Token": token,
+//     },
+//     method: "POST",
+//   })
+//   .then(res => res.json())
+//   .then(res => {console.log(res); appendNewPost(res)})
+//   .catch(function(res){ console.log(res) })
+// }
 
 appendNewPost = (response) => {
   const posts = document.querySelector('.posts')
