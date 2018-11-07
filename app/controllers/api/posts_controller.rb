@@ -19,6 +19,6 @@ class Api::PostsController < ApplicationController
   end
 
   def get_more_posts
-    render json: get_10_next_posts
+    render json: get_next_10_posts
   end
 end

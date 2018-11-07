@@ -22,7 +22,7 @@
       <p class="post__content"><%= post.content %></p>
       <div class="post__footer">
         <p class="post__weather--text"><%= post.weather_description %></p>
-        <p class="post__footer--time"><%= post.created_at.strftime '%l:%M %P – %a, %d/%m/%Y' %></p>
+        <p class="post__footer--time"><%= post.created_at %></p>
         <p class="post__footer--city"><%= post.city %></p>
       </div>
     </div>
@@ -44,4 +44,6 @@
       )
     })
   <% end %>
+
+convertAllHours()
 </script>
