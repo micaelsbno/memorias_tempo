@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
-      @error = 'Username is already taken'
+      @error = 'Username or password invalid'
       render 'register'
     end    
   end

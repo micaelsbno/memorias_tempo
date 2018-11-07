@@ -63,7 +63,7 @@ feature 'User Accounts', :type => :feature do
       fill_in 'password', with: '123'
       click_button 'Submit'
 
-      expect(page).to have_content 'Username is already taken'
+      expect(page).to have_content 'Username or password invalid'
     end
   end
 end
