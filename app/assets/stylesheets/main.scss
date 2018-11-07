@@ -16,3 +16,11 @@ body {
 .error {
   color: red
 }
+
+.blue-background {
+  position: fixed;
+  width: 100vw;
+  background: #BFE6FE;
+  height: 100vh;
+  z-index: -4
+}

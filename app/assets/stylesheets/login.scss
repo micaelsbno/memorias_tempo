@@ -2,7 +2,8 @@ $main-color: #5861D9;
 
 .main-banner {
   text-align: center;
-  margin: 3em 0;
+  padding: 6em 0 3em 0;
+  margin: 0 auto;
 }
 
 h1 {
@@ -31,4 +32,91 @@ h1 {
     border: 0;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.16)
   }
+}
+
+// clouds start here
+
+.cloud {
+  position: relative;
+  height: 3em;
+  width: 3em
+}
+
+.cloud_top {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.cloud__top-left {
+  background-color: white;
+  border-radius: 10em;
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  top: -27%;
+  left: 22%;
+}
+
+.cloud__top-middle {
+  background-color: white;
+  border-radius: 10em;
+  width: 50%;
+  height: 50%;
+}
+
+.cloud__top-right {
+  background-color: white;
+  border-radius: 10em;
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  right: 0%;
+  top: -9%;
+}
+
+.cloud__bottom {
+  position: absolute;
+  top: 0%;
+  background-color: white;
+  border-radius: 10em;
+  width: 100%;
+  height: 50%;
+}
+
+.cloud__container {
+  position: absolute;
+  animation: move-clouds;
+  animation-duration: 450s;
+  animation-iteration-count: infinite;
+  z-index: -3;
+}
+
+.clouds {
+  position: absolute;
+  top:0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -3;
+}
+
+.cloud__container-2 {
+  position: absolute;
+  animation: move-slower;
+  animation-duration: 560s;
+  animation-iteration-count: infinite;
+  z-index: -3;
+}
+
+@keyframes move-clouds {
+  0% {transform: translateX(0)}
+  50% {transform: translateX(-30em)}
+  100% {transform: translateX(-80em)}
+}
+
+@keyframes move-slower {
+  0% {transform: translateX(0)}
+  50% {transform: translateX(-20em)}
+  100% {transform: translateX(-50em)}
 }
