@@ -5,7 +5,7 @@
 
 <%= form_tag(sessions_path, :method => 'post', :class => 'login-form', name: 'login-form') do %>
   <%= text_field_tag 'username', nil, class: 'default-form-input' %>
-  <%= text_field_tag 'password', nil, class: 'default-form-input' %>
+  <%= text_field_tag 'password', nil, class: 'default-form-input', type: 'password' %>
   <%= submit_tag 'Login', :id => 'Login' %>
 <% end %>
 
