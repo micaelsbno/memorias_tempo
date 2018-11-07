@@ -18,8 +18,8 @@ module PostsHelper
 
   def find_city
     query = HTTParty.get("http://api.ipstack.com/#{params[:ip]}?access_key=#{ENV['IPSTACK_KEY']}")
-    return query['region_name'] if query['region_name']
     return query['city'] if query['city']
+    return query['region_name'] if query['region_name']
   end
 
   def create_new_post(response)

@@ -1,17 +1,18 @@
 require 'rails_helper'
 
-feature 'Create Posts', :type => :request do
-  before { 
-    User.create(username: 'test_user', password: '123')
-    visit root_path
-    fill_in 'username', with: 'test_user'
-    fill_in 'password', with: '123'
-    click_button 'Login'
-  }
-  let (:user) { User.find_by(username: 'test_user') }
+feature 'Create Posts', :type => :feature do
+  # before { 
+  #   User.create(username: 'test_user', password: '123')
+  #   visit root_path
+  #   fill_in 'username', with: 'test_user'
+  #   fill_in 'password', with: '123'
+  #   click_button 'Login'
+  # }
+  # let (:user) { User.find_by(username: 'test_user') }
   
-  it 'user creates a posts with gps' do
-    post '/posts', :params => { content: 'post_content', lat: '-37.8231957', lon: '144.98891799999998' }
-    expect(page).to have_content 'post_content'
-  end
+  # it 'user creates a posts with gps' do
+    
+  #   wait_for_ajax
+  #   expect(page).to have_content 'post_content'
+  # end
 end
