@@ -16,4 +16,8 @@ module UsersHelper
   def new_user
     User.new(username: params[:username], password: params[:password])
   end
+
+  def get_user_first_10_posts
+    @user.posts.order("created_at desc").limit(10)
+  end
 end

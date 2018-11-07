@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def index
     if logged_in?
       @user = current_user
-      @posts = @user.posts.order("created_at desc").limit(10)
+      @posts = get_user_first_10_posts
       render :show
     else
       render :login
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:id])
-    @posts = @user.posts.order("created_at desc").limit(10)
+    @posts = get_user_first_10_posts
     render :show
   end
 
