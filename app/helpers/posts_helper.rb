@@ -1,8 +1,6 @@
 module PostsHelper
   def create_post
-    key = ENV['WEATHER_API_KEY']
-    weather_response = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{params[:lat].to_f}&lon=#{params[:lon].to_f}&appid=#{key}")
-    create_new_post(weather_response)
+    create_new_post(call_weather_api_with_lat_lon)
   end
 
   def create_post_by_ip
@@ -45,12 +43,15 @@ module PostsHelper
     Post.where(user: params[:id]).order('created_at desc').limit(10).offset(params[:offset])
   end
 
-  def call_weather_api_with_ip
-    key = ENV['WEATHER_API_KEY']
-    HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{find_city}&appid=#{key}")
+  def call_weather_api_with_lat_lon
+    HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{params[:lat].to_f}&lon=#{params[:lon].to_f}&appid=#{ENV['WEATHER_API_KEY']}")
   end
 
   def find_city_with_ip
     HTTParty.get("http://api.ipstack.com/#{params[:ip]}?access_key=#{ENV['IPSTACK_KEY']}")
+  end
+  
+  def call_weather_api_with_ip
+    HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{find_city}&appid=#{ENV['WEATHER_API_KEY']}")
   end
 end
