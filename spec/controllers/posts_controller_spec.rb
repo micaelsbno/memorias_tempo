@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Api::PostsController, type: :request do
 
+  let (:user) { User.new(username: 'test_user', password: '1234') }
   before { 
-    user = User.new(username: 'test_user', password: '1234')
     user.save
     post sessions_path, params: { username: user.username, password: user.password }
   }
@@ -33,6 +33,15 @@ RSpec.describe Api::PostsController, type: :request do
       expect(hash_body).to include({
         'content' => 'post_content', 
       })
+    end
+
+    it 'shows extra posts when user scrolls down' do
+      30.times { Post.create(content: 'testPost', user_id: user.id) }
+      
+      get "/user_posts/#{user.id}", params: { offset: '10' }
+      hash_body = JSON.parse(response.body)
+
+      expect(hash_body.length).to be 10
     end
   end
 end
