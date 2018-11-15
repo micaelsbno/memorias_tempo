@@ -52,11 +52,6 @@ while (document.querySelectorAll('.star').length < 400) {
   createStar(2)
 }
 
-setTimeout(() => {
-  setInterval(lightSmallFire,3000)
-  setInterval(lightBigFire,2800)
-},400)
-
 function shootStar(number){
   space = document.querySelector('.shooting-star')
   star = document.createElement('div')
