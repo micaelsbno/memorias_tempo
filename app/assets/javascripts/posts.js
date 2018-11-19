@@ -36,8 +36,10 @@ insertNewPostOnTop = (response) => {
   posts.insertBefore(postDiv, posts.firstChild)
 }
 
-formatDate = (dateString) => {
-  date = new Date(dateString)
+formatDate = (date) => {
+  if (typeof date === 'string') {
+    date = new Date(date)
+  }
   string = ``
   string += Math.abs(date.getHours() - 12)
   string += `:${date.getMinutes().toString().length === 1 ? '0' + date.getMinutes() : date.getMinutes()} `
@@ -94,5 +96,5 @@ function convertHours(oldDate, offset) {
   var d = new Date(oldDate);
   var utc = d.getTime() + (d.getTimezoneOffset());
   var nd = new Date(utc + offset);
-  return nd.toLocaleString();
+  return nd;
 }
